@@ -1,0 +1,12 @@
+key.json
+*/key.json
+__pycache__/
+*.pyc
+*.wav
+*.jpg
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.wav
+*.jpg
