@@ -10,3 +10,10 @@ __pycache__/
 *.pyc
 *.wav
 *.jpg
+.venv/
+__pycache__/
+*.pyc
+.env
+key.json
+*.wav
+*.jpg

@@ -443,3 +443,27 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+from modules.audio_feedback import analyze_audio_feedback
+
+# ... (녹음 끝나고 temp.wav 저장된 다음)
+# ... (Google STT 결과 text 얻은 다음)
+# 예: stt_text = "아니거든 그리고 더 낫거든"
+
+try:
+    # ✅ 여기: 너의 질문 생성(= OpenAI 호출) 코드
+    question = make_question(stt_text)   # 예시: 네 함수명으로 바꿔
+    print("질문:", question)
+
+except Exception as e:
+    print("🔥 질문 생성 실패(무시하고 계속 진행):", e)
+
+finally:
+    # ✅ 여기: 무조건 음성 피드백 출력
+    wav_path = "temp.wav"
+    result = analyze_audio_feedback(
+        wav_path,
+        transcript=stt_text,          # STT 결과 넣어주면 '명료도'가 더 잘 나옴
+        stt_confidence_avg=None       # confidence 있으면 넣고, 없으면 None
+    )
+    print(result["report_text"])
